@@ -45,12 +45,14 @@
             }
             function submit() {
                 let answer = $("#answer").val().toLowerCase();
-                if (answer == questions[progress].answer) {
+                if (answer == questions[progress].answer.toLowerCase()) {
                     $("#perguntas").append(questions[progress].makeAnswerDiv());
                     progress++;
                     setProgress();
                     addNextQuestion();
-                };
+                } else {
+                    $("#answer").val("");
+                }
             }
             function addDoneQuestions() {
                 for (let i = 0; i < progress; i++) {
@@ -64,64 +66,72 @@
             }
 
             addQuestion("Quantas associações há em portugal associadas ao movimento mundial escutista?", "4");
-            addQuestion("qual é o nome que se dá ao Projeto feito pelos Pioneiros?", "empreendimento");
-            addQuestion("qual é o símbolo da presença de Jesus Cristo, entre os homens?", "icthus");
-            addQuestion("quantos são os simbolos dos pioneiros?", "4");
-            addQuestion("quantas vezes o nosso patrono negou conhecer jesus?", "3");
-            addQuestion("qual era a profissão do patrono da terceira secção?", "pescador");
-            addQuestion("qual era o nome original do patrono dos pioneiros?", "simão");
-            addQuestion("que objeto o patrono dos pioneiros tem nas mãos?", "chaves");
-            addQuestion("qual é o patrono da terceira secção?", "são pedro");
-            addQuestion("como se chama a reunião entre os guias e o chefe de comunidade?", "conselho de guias");
-            addQuestion("que cargo não pode acumular outros cargos?", "guia");
-            addQuestion("quantos são os cargos essenciais?", "5");
-            addQuestion("como se chama o canto da comunidade?", "abrigo");
-            addQuestion("onde é que cada equipa guarda a sua história?", "livro de ouro");
-            addQuestion("qual é a cor do lenço dos pioneiros?", "azul");
-            addQuestion("como se chama a IV secção?", "caminheiros");
-            addQuestion("com que idade podes entrar no CNE?", "6 anos");
-            addQuestion("quantas secções há no cne?", "4");
-            addQuestion("onde foi fundado o cne?", "braga");
-            addQuestion("quando foi fundado o cne?", "27 de maio de 1923");
-            addQuestion("quantos escuteiros há no mundo?", "28 milhões");
-            addQuestion("o que quer dizer a palavra scout?", "batedor");
-            addQuestion("qual é o nome da comunidade nos escuteiros marítimos?", "frota");
-            addQuestion("quem é o patrono mundial do ecutismo?", "s.jorge");
-            addQuestion("em que data faleceu bp?", "8 de janeiro de 1941");
-            addQuestion("quantos filhos teve bp?", "3");
-            addQuestion("qual era a diferença de idades entre bp e a mulher?", "32 anos");
-            addQuestion("em quantos jamborees bp participou?", "5");
-            addQuestion("quantos escuteiros estiveram no primeiro jamboree?", "8000");
-            addQuestion("quantas patrulhas eram no primeiro acampamento?", "4");
-            addQuestion("onde foi o primeiro acampamento?", "brownsea");
-            addQuestion("o que é que bp foi proclamado depois do cerco?", "herói nacional");
-            addQuestion("qual era o meio de transporte dos rapazes no cerco de mafeking?", "bicicleta");
-            addQuestion("que animais começaram a matar no cerco de mafeking para poderem comer?", "cavalos");
-            addQuestion("onde se situa mafeking?", "áfrica do sul");
-            addQuestion("quantos dias durou o cerco de mafeking?", "217");
-            addQuestion("qual foi o nome que os matabeles deram a bp?", "impisa");
-            addQuestion("em que meio de transporte baden powell costumava passear com os seus irmãos?", "barco");
+            addQuestion("Qual é o nome que se dá ao Projeto feito pelos Pioneiros?", "empreendimento");
+            addQuestion("Qual é o símbolo da presença de Jesus Cristo, entre os homens?", "ichthus");
+            addQuestion("Quantos são os simbolos dos pioneiros?", "4");
+            addQuestion("Quantas vezes o nosso patrono negou conhecer jesus?", "3");
+            addQuestion("Qual era a profissão do patrono da terceira secção?", "pescador");
+            addQuestion("Qual era o nome original do patrono dos pioneiros?", "simão");
+            addQuestion("Que objeto o patrono dos pioneiros tem nas mãos?", "chaves");
+            addQuestion("Qual é o patrono da terceira secção?", "são pedro");
+            addQuestion("Como se chama a reunião entre os guias e o chefe de comunidade?", "conselho de guias");
+            addQuestion("Que cargo não pode acumular outros cargos?", "guia");
+            addQuestion("Quantos são os cargos essenciais?", "5");
+            addQuestion("Como se chama o canto da comunidade?", "abrigo");
+            addQuestion("Onde é que cada equipa guarda a sua história?", "livro de ouro");
+            addQuestion("Qual é a cor do lenço dos pioneiros?", "azul");
+            addQuestion("Como se chama a IV secção?", "caminheiros");
+            addQuestion("Com que idade podes entrar no CNE?", "6 anos");
+            addQuestion("Quantas secções há no cne?", "4");
+            addQuestion("Onde foi fundado o cne?", "braga");
+            addQuestion("Quando foi fundado o cne?", "27 de maio de 1923");
+            addQuestion("Quantos escuteiros há no mundo?", "28 milhões");
+            addQuestion("O que quer dizer a palavra scout?", "batedor");
+            addQuestion("Qual é o nome da comunidade nos escuteiros marítimos?", "frota");
+            addQuestion("Quem é o patrono mundial do ecutismo?", "s.jorge");
+            addQuestion("Em que data faleceu bp?", "8 de janeiro de 1941");
+            addQuestion("Quantos filhos teve bp?", "3");
+            addQuestion("Qual era a diferença de idades entre bp e a mulher?", "32 anos");
+            addQuestion("Em quantos jamborees bp participou?", "5");
+            addQuestion("Quantos escuteiros estiveram no primeiro jamboree?", "8000");
+            addQuestion("Quantas patrulhas eram no primeiro acampamento?", "4");
+            addQuestion("Onde foi o primeiro acampamento?", "brownsea");
+            addQuestion("O que é que bp foi proclamado depois do cerco?", "herói nacional");
+            addQuestion("Qual era o meio de transporte dos rapazes no cerco de mafeking?", "bicicleta");
+            addQuestion("Que animais começaram a matar no cerco de mafeking para poderem comer?", "cavalos");
+            addQuestion("Onde se situa mafeking?", "áfrica do sul");
+            addQuestion("Quantos dias durou o cerco de mafeking?", "217");
+            addQuestion("Qual foi o nome que os matabeles deram a bp?", "impisa");
+            addQuestion("Em que meio de transporte baden powell costumava passear com os seus irmãos?", "barco");
             addQuestion("Em que ano baden powell foi promovido a tenente?", "1878");
-            addQuestion("como se chamava o irmão de baden powell que contribuiu para a fundação do escutismo marítimo?", "warington");
-            addQuestion("qual a profissão do pai de Robert Baden Powell?", "professor de geometria");
-            addQuestion("quantas áreas tem o sistema de progressão pessoal?", "6");
+            addQuestion("Como se chamava o irmão de baden powell que contribuiu para a fundação do escutismo marítimo?", "warington");
+            addQuestion("Qual a profissão do pai de Robert Baden Powell?", "professor de geometria");
+            addQuestion("Quantas áreas tem o sistema de progressão pessoal?", "6");
             addQuestion("Quantas etapas tem o sistema de prograssão pessoal?", "4");
             addQuestion("O que podes receber quando terminas todas as etapas do sistema de progressão pessoal?", "anilha de mérito");
             addQuestion("Qual é o patrono dos caminheiros?", "São Paulo");
-            addQuestion("quantas maravilhas tem o método escutista?", "sete");
-            addQuestion("quantos são os pontos cardeais?", "4");
-            addQuestion("quantos são os pontos sub colaterais?", "8");
-            addQuestion("em que ponto cardeal o sol nasce?", "este");
-            addQuestion("qual é o azimute do les-sudeste?", "112,5");
-            addQuestion("para que ponto colateral as portas dos moinhos portugueses estão normalente viradas?", "sudoeste");
-            addQuestion("quais são os animais que se encontram nos muros e paredes voltados para Leste e para Sul?", "caracóis");
-            addQuestion("como se chama  estrela da cauda da ursa menor?", "estrela polar");
+            addQuestion("Quantas maravilhas tem o método escutista?", "sete");
+            addQuestion("Quantos são os pontos cardeais?", "4");
+            addQuestion("Quantos são os pontos sub colaterais?", "8");
+            addQuestion("Em que ponto cardeal o sol nasce?", "este");
+            addQuestion("Qual é o azimute do les-sudeste?", "112,5");
+            addQuestion("Para que ponto colateral as portas dos moinhos portugueses estão normalente viradas?", "sudoeste");
+            addQuestion("Quais são os animais que se encontram nos muros e paredes voltados para Leste e para Sul?", "caracóis");
+            addQuestion("Como se chama  estrela da cauda da ursa menor?", "estrela polar");
             addQuestion("Qual é o norte mostrado na bussula?", "norte magnético");
             addQuestion("Quantos graus se deve somar para obter um azimute inverso?", "180");
             addQuestion("Qual é a diferença entre um machado e uma machada?", "tamanho");
-            addQuestion("quantas mãos deves usar para cortar com um machado?", "2");
+            addQuestion("Quantas mãos deves usar para cortar com um machado?", "2");
 
             $(function () {
+                $("#answer").on('keydown', function (e) {
+                    console.log(e.keyCode);
+                    if (e.keyCode === 13) {
+                        e.preventDefault();
+                        submit();
+                        return false;
+                    }
+                });
                 addDoneQuestions();
                 addNextQuestion();
             })
