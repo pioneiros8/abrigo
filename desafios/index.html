@@ -50,9 +50,8 @@
                     progress++;
                     setProgress();
                     addNextQuestion();
-                } else {
-                    $("#answer").val("");
                 }
+                $("#answer").val("");
             }
             function addDoneQuestions() {
                 for (let i = 0; i < progress; i++) {
