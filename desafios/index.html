@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a href="../"><img height="128px" src="../imgs/titulo.png"></img></a>
+    <nav>
+        <a href="../">Home</a>
+        <a href="../desafios">Desafios</a>
+        <hr>
+    </nav>
+
+    <section>
+        <h1>Primeiro Desafio: Ficar em Casa</h1>
+        as perguntas tem apenas uma unica resposta
+        descriçao do desafio<br>
+        <br>
+
+        <script>
+            var questions = [];
+            var progress = parseInt(Cookies.get("desafio1_progress"));
+            function setProgress() { Cookies.set("desafio1_progress", progress); }
+            console.log("progress: " + progress);
+            if (!progress) { progress = 0; setProgress(); };
+            function addQuestion(question, answer) {
+                obj = {};
+                obj.question = question;
+                obj.answer = answer;
+                obj.makeQuestionDiv = function (question_nr) {
+                    return $(`
+                        <div class="question_title">Pergunta ` + question_nr + `</div>
+                        <div class="question">` + this.question + `</div>
+                    `);
+                };
+                obj.makeAnswerDiv = function () {
+                    return $(`<div class="answer">` + this.answer + `</div>`);
+                };
+                questions.push(obj);
+            }
+            function submit() {
+                let answer = $("#answer").val().toLowerCase();
+                if (answer == questions[progress].answer) {
+                    $("#perguntas").append(questions[progress].makeAnswerDiv());
+                    progress++;
+                    setProgress();
+                    addNextQuestion();
+                };
+            }
+            function addDoneQuestions() {
+                for (let i = 0; i < progress; i++) {
+                    $("#perguntas").append(questions[i].makeQuestionDiv(1 + i));
+                    $("#perguntas").append(questions[i].makeAnswerDiv());
+                }
+            }
+            function addNextQuestion() {
+                if (questions[progress])
+                    $("#perguntas").append(questions[progress].makeQuestionDiv(1 + progress));
+            }
+
+            addQuestion("Quantas associações há em portugal associadas ao movimento mundial escutista?", "4");
+            addQuestion("qual é o nome que se dá ao Projeto feito pelos Pioneiros?", "empreendimento");
+            addQuestion("qual é o símbolo da presença de Jesus Cristo, entre os homens?", "icthus");
+            addQuestion("quantos são os simbolos dos pioneiros?", "4");
+            addQuestion("quantas vezes o nosso patrono negou conhecer jesus?", "3");
+            addQuestion("qual era a profissão do patrono da terceira secção?", "pescador");
+            addQuestion("qual era o nome original do patrono dos pioneiros?", "simão");
+            addQuestion("que objeto o patrono dos pioneiros tem nas mãos?", "chaves");
+            addQuestion("qual é o patrono da terceira secção?", "são pedro");
+            addQuestion("como se chama a reunião entre os guias e o chefe de comunidade?", "conselho de guias");
+            addQuestion("que cargo não pode acumular outros cargos?", "guia");
+            addQuestion("quantos são os cargos essenciais?", "5");
+            addQuestion("como se chama o canto da comunidade?", "abrigo");
+            addQuestion("onde é que cada equipa guarda a sua história?", "livro de ouro");
+            addQuestion("qual é a cor do lenço dos pioneiros?", "azul");
+            addQuestion("como se chama a IV secção?", "caminheiros");
+            addQuestion("com que idade podes entrar no CNE?", "6 anos");
+            addQuestion("quantas secções há no cne?", "4");
+            addQuestion("onde foi fundado o cne?", "braga");
+            addQuestion("quando foi fundado o cne?", "27 de maio de 1923");
+            addQuestion("quantos escuteiros há no mundo?", "28 milhões");
+            addQuestion("o que quer dizer a palavra scout?", "batedor");
+            addQuestion("qual é o nome da comunidade nos escuteiros marítimos?", "frota");
+            addQuestion("quem é o patrono mundial do ecutismo?", "s.jorge");
+            addQuestion("em que data faleceu bp?", "8 de janeiro de 1941");
+            addQuestion("quantos filhos teve bp?", "3");
+            addQuestion("qual era a diferença de idades entre bp e a mulher?", "32 anos");
+            addQuestion("em quantos jamborees bp participou?", "5");
+            addQuestion("quantos escuteiros estiveram no primeiro jamboree?", "8000");
+            addQuestion("quantas patrulhas eram no primeiro acampamento?", "4");
+            addQuestion("onde foi o primeiro acampamento?", "brownsea");
+            addQuestion("o que é que bp foi proclamado depois do cerco?", "herói nacional");
+            addQuestion("qual era o meio de transporte dos rapazes no cerco de mafeking?", "bicicleta");
+            addQuestion("que animais começaram a matar no cerco de mafeking para poderem comer?", "cavalos");
+            addQuestion("onde se situa mafeking?", "áfrica do sul");
+            addQuestion("quantos dias durou o cerco de mafeking?", "217");
+            addQuestion("qual foi o nome que os matabeles deram a bp?", "impisa");
+            addQuestion("em que meio de transporte baden powell costumava passear com os seus irmãos?", "barco");
+            addQuestion("Em que ano baden powell foi promovido a tenente?", "1878");
+            addQuestion("como se chamava o irmão de baden powell que contribuiu para a fundação do escutismo marítimo?", "warington");
+            addQuestion("qual a profissão do pai de Robert Baden Powell?", "professor de geometria");
+            addQuestion("quantas áreas tem o sistema de progressão pessoal?", "6");
+            addQuestion("Quantas etapas tem o sistema de prograssão pessoal?", "4");
+            addQuestion("O que podes receber quando terminas todas as etapas do sistema de progressão pessoal?", "anilha de mérito");
+            addQuestion("Qual é o patrono dos caminheiros?", "São Paulo");
+            addQuestion("quantas maravilhas tem o método escutista?", "sete");
+            addQuestion("quantos são os pontos cardeais?", "4");
+            addQuestion("quantos são os pontos sub colaterais?", "8");
+            addQuestion("em que ponto cardeal o sol nasce?", "este");
+            addQuestion("qual é o azimute do les-sudeste?", "112,5");
+            addQuestion("para que ponto colateral as portas dos moinhos portugueses estão normalente viradas?", "sudoeste");
+            addQuestion("quais são os animais que se encontram nos muros e paredes voltados para Leste e para Sul?", "caracóis");
+            addQuestion("como se chama  estrela da cauda da ursa menor?", "estrela polar");
+            addQuestion("Qual é o norte mostrado na bussula?", "norte magnético");
+            addQuestion("Quantos graus se deve somar para obter um azimute inverso?", "180");
+            addQuestion("Qual é a diferença entre um machado e uma machada?", "tamanho");
+            addQuestion("quantas mãos deves usar para cortar com um machado?", "2");
+
+            $(function () {
+                addDoneQuestions();
+                addNextQuestion();
+            })
+
+        </script>
+
+        <div id="perguntas"></div>
+        <textarea id="answer"></textarea>
+        <a id="submit" onclick="submit()">Submeter</a>
+    </section>
+
+</body>
+
+</html>

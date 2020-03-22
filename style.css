@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Patua+One&display=swap');
+body {
+    color: #001161;
+    font-family: 'Open Sans', sans-serif;
+    margin: 2% 5%;
+}
+
+a {
+    text-decoration: none;
+    color: #2c3d8d;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #4b69ec;
+    cursor: pointer;
+}
+
+hr {
+    border-color: #7e8bc5;
+}
+
+nav {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 20pt;
+    margin: 20px 0;
+}
+
+nav a {
+    color: #001161;
+    margin-right: 20px;
+}
+
+section {
+    color: #001161;
+}
+
+section h1 {
+    font-size: 16pt;
+}
