@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a href="../"><img height="128px" src="../../imgs/titulo.png"></img></a>
+    <nav>
+        <a href="../../">Home</a>
+        <a href="../../desafios">Desafios</a>
+        <hr>
+    </nav>
+
+    <section>
+        <h1>Primeiro Desafio</h1>
+
+        <script>
+            var questions = [];
+            var progress = parseInt(Cookies.get("desafio1_progress"));
+            function setProgress() { Cookies.set("desafio1_progress", progress); }
+            console.log("progress: " + progress);
+            if (!progress) { progress = 0; setProgress(); };
+            function addQuestion(question, answer) {
+                obj = {};
+                obj.question = question;
+                obj.answer = answer;
+                obj.makeQuestionDiv = function (question_nr) {
+                    if (this.question.startsWith("img:")) {
+                        return $(`
+                            <div class="question_title">Pergunta ` + question_nr + `</div>
+                            <img class="question" src="imgs/`+ this.question.substring(4) + `.png"></img>
+                        `);
+                    }
+                    return $(`
+                        <div class="question_title">Pergunta ` + question_nr + `</div>
+                        <div class="question">` + this.question + `</div>
+                    `);
+                };
+                obj.makeAnswerDiv = function () {
+                    return $(`<div class="answer">Resposta: ` + this.answer + `</div><br><hr><br>`);
+                };
+                questions.push(obj);
+            }
+            function submit() {
+                let answer = $("#answer").val().toLowerCase();
+                if (answer == questions[progress].answer.toLowerCase()) {
+                    $("#perguntas").append(questions[progress].makeAnswerDiv());
+                    progress++;
+                    setProgress();
+                    addNextQuestion();
+                    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                }
+                $("#answer").val("");
+            }
+            function addDoneQuestions() {
+                let max = progress >= questions.length ? questions.length : progress;
+                for (let i = 0; i < max; i++) {
+                    $("#perguntas").append(questions[i].makeQuestionDiv(1 + i));
+                    $("#perguntas").append(questions[i].makeAnswerDiv());
+                }
+                if (progress >= questions.length) {
+                    $("#answer").hide();
+                    $("#submit").hide();
+                }
+            }
+            function addNextQuestion() {
+                if (questions[progress])
+                    $("#perguntas").append(questions[progress].makeQuestionDiv(1 + progress));
+            }
+
+            addQuestion("17.21.1.14.20.1.19  1.19.19.15.3.9.1.3.15.5.19  8.1  5.13  16.15.18.20.21.7.1.12  1.19.19.15.3.9.1.4.1.19  1.15  13.15.22.9.13.5.14.20.15  13.21.14.4.9.1.12  5.19.3.21.20.9.19.20.1? 2.15.1  3.1.3.1", "4");
+            addQuestion("lauq é o emon euq es ád oa otejorp otief solep sorienoip ? aob acac", "empreendimento");
+            addQuestion("jfzo v l hrnylol wz kivhvmxz wv Qvhfh Xirhgl vmgiv lh slnvmh? ylz xzxz", "ichthus");
+            addQuestion("13.V.I.11.16.IV.15 15.I.IV IV.15 15.III.10.1.IV.9.IV.15 3.IV.15 12.III.IV.11.II.III.14.IV.15? 1.IV.I 2.I.2.I", "4");
+            addQuestion("qchuchachnchtchachsch vchechzchechsch och nchochschschoch pchachtchrchochnchoch nchechgchochuch cchochnchhchechcchechrch jchechschuchsch? bchochach cchachcchach", "3");
+            addQuestion("lpvq zmv v kmjadnnvj yj kvomjij yv ozmxzdmv nzxxvj? wjv xvxv", "pescador");
+            addQuestion("10.6.26.16 22.9.26 12 13.12.14.22 12.9.18.20.18.13.26.15 23.12 11.26.7.9.12.13.12 23.12.8 11.18.12.13.22.18.9.12.8? 25.12.26 24.26.24.26", "simão");
+            addQuestion("img:spedromaos", "chaves");
+            addQuestion("lauq é o onortap ad ariecret oãçces? aob acac", "são pedro");
+            addQuestion("xlnl hv xsznz z ivfmrzl vmgiv lh tfrzh v l xsvuv wv xlnfmrwzwv? ylz xzxz", "conselho de guias");
+            addQuestion("img:cargo", "guia");
+            addQuestion("13.V.I.11.16.IV.15 15.I.IV IV.15 2.I.14.G.IV.15 II.15.15.II.11.2.III.I.III.15? 1.IV.I 2.I.2.I", "5");
+            addQuestion("cfaofamfaofa sfa efa cfahfaafamfaafa ofa cfaafanfatfaofa dfaafa cfaofamfaufanfaifadfaafadfadfaefa?bfaofaafa cfaafacfaafa", "abrigo");
+            addQuestion("15.14.4.5 4 17.21.5 3.1.4.1 5.17.21.9.16.1 7.21.1.18.4.1 1 19.21.1 8.9.19.20.15.18.9.1? 2.15.1 3.1.3.1", "livro de ouro");
+            addQuestion("10.6.26.15 22 26 24.12.9 23.12 15.22.13.24.12 23.12.8 11.18.12.13.22.18.9.12.8? 25.12.26 24.26.24.26", "azul");
+            addQuestion("img:quartaseccao", "caminheiros");
+            addQuestion("2.IV.10 13.V.II III.3.I.3.II 12.IV.3.II.15 II.11.16.14.I.14 11.IV 2.11.II? 1.IV.I 2.I.2.I", "6 anos");
+            addQuestion("img:seccoes", "4");
+            addQuestion("jiyz ajd apiyvyj j xiz? wjv xvxv", "braga");
+            addQuestion("qruuruarunrudnruoru fruoruiru fruurunrudruarudruo oru crunrueru? bruoruaru cruarucruaru", "27 de maio de 1923");
+            addQuestion("10.6.26.13.7.12.8 22.8.24.6.7.22.18.9.12.8 19.26 13.12 14.6.13.23.12? 25.12.26 24.26.24.26", "28 milhões");
+            addQuestion("img:scout", "batedor");
+            addQuestion("lpvg z j ijhz yv xjhpidyvyz ijn znxpozdmjn hvmdodhjn?wjv xvxv", "frota");
+            addQuestion("17.21.5.13 5 15 16.1.20.18.15.14.15 13.21.14.4.9.1.12 4.15 5.19.3.21.20.9.19.13.15? 2.15.1 3.1.3.1", "s.jorge");
+            addQuestion("II.10 13.V.II 3.I.16.I 4.I.9.II.2.II.V 1.I.3.II.11 12.IV.18.II.9.9? 2.IV.I 2.I.2.I", "8 de janeiro de 1941");
+            addQuestion("sotnauq sohlif evet nedab llewop? aob acac", "3");
+            addQuestion("jfzo viz z wruvivmxz wv rwzwvh vmgiv yk v z nflsvi? ylz xzxz", "32 anos");
+            addQuestion("zh lpviojn evhwjmzzn hpiydvdn wvyzi kjrzgg kvmodxdkjp? wjv xvxv", "5");
+            addQuestion("10.6.26.13.7.12.8 22.8.24.6.7.22.18.9.13.8 22.8.7.18.5.22.9.26.14 13.12 11.9.18.14.22.18.9.12 17.26.14.25.12.9.22.22 14.6.13.23.18.26.15? 25.12.26 24.26.24.26", "8000");
+            addQuestion("qlouloalonlotloaloslo ploalotlorloulollohloaloslo elorloalomlo nloolo plorloilomloeloilorloolo alocloalomloploalomloelonlotloolo? blooloalo cloalocloalo", "4");
+            addQuestion("img:primeiro", "brownsea");
+            addQuestion("15 17.21.5 5 17.21.5 2.1.4.5.14 16.15.23.5.12.12 6.15.9 16.18.15.3.12.1.13.1.4.15 4.5.16.15.9.19 4.15 3.5.18.3.15 4.5 13.1.6.5.11.9.14.7? 2.15.1 3.1.3.1", "herói nacional");
+            addQuestion("img:mafeking", "bicicleta");
+            addQuestion("jfv zmrnzrh xlnvxzizn z nzgzi ml xvicl wv nzuvprmt kziz klwvivn xlnvi? ylz xzxz", "cavalos");
+            addQuestion("img:situa", "áfrica do sul");
+            addQuestion("sotnauq said uorud o ocrec ed gnikefam? aob acac", "217");
+            addQuestion("lpvg ajd j ijhz lpz jn hvovwzgzn yzmvh v wvyzi kjrzgg? wjv xvxv", "impisa");
+            addQuestion("img:passear", "barco");
+            addQuestion("img:tenente", "1878");
+            addQuestion("img:irmao", "warington");
+            addQuestion("jfzo z kilurhhzl wl kzr wv ilyvig yzwvm kldvoo? ylz xzxz", "professor de geometria");
+            addQuestion("17.21.1.14.20.1.19 1.18.5.1.19 20.5.13 15 19.9.19.20.5.13.1 4.5 16.18.7.18.19.19.1.15 16.5.19.19.15.1.12? 2.15.1 3.1.3.1", "6");
+            addQuestion("10.6.26.13.7.26.8 22.7.26.11.26.8 7.22.14 12 8.18.8.7.22.14.26 23.22 11.9.12.20.9.22.8.8.26.12 11.22.8.8.12.26.15? 25.12.26 24.26.24.26", "4");
+            addQuestion("j lpz kjyzn mzxzwzm lpviyj ozmhdivn ojyvn vn zovkvn yj ndnozhv yz kmjbmzxvj kznnjvg? wjv xvxv", "anilha de mérito");
+            addQuestion("13.V.I.9 II IV 12.I.16.14.IV.11.IV 3.IV.15 2.I.10.III.11.6.II.III.14.IV.15? 1.IV.I 2.I.2.I", "São Paulo");
+            addQuestion("qfyufyafynfytfyafysfymfyafyrfyafyvfyifylfyhfyafysfy tfyefymfy ofy mfyefytfyofydfyofy efysfycfyufytfyifysfytfya?bfyofyafy cfyafycfyafy", "sete");
+            addQuestion("img:pontosc", "4");
+            addQuestion("sotnauq oâs so sotnop bus siaretaloc? aob acac", "8");
+            addQuestion("img:sol", "este");
+            addQuestion("10.6.26.15 22 12 26.1.18.14.6.7.22 23.12 15.22.8-8.6.23.22.8.7.22? 25.12.26 24.26.24.26", "112,5");
+            addQuestion("kvmv lpz kjioj xjgvozmvg vn kjmovn yjn hjdicjn kjmopbpznzn znovj ijmhvghzioz qdmvyvn? wjv xvxv", "sudoeste");
+            addQuestion("10.6.26.18.8 8.26.12 12.8 26.13.18.14.26.18.8 10.6.22 8.22 22.13.24.12.13.7.9.26.14 13.12.8 14.6.9.12.8 22 11.26.9.22.23.22.8 5.13.15.7.26.23.12.8 11.26.9.26 15.22.8.7.22 22 11.26.9.26 8.6.15? 25.12.26 24.26.24.26", "caracóis");
+            addQuestion("2.IV.10.IV 15.II 2.6.I.10.I I II.15.16.14.II.9.I 3.I 2.I.V.3.I 3.I V.14.15.I 10.II.11.IV.14? 2.IV.I 2.I.2.I", "estrela polar");
+            addQuestion("img:bussula", "norte magnético");
+            addQuestion("qnounoanotnoonosno gnornoanounosno snoeno dnoenovnoeno snoonomnoanorno pnoanornoano onobnotnoenorno unomno anoznoinomnounotnoeno inonnovnoenornosnoono?bnoonoano cnoanocnoano", "180");
+            addQuestion("lauq é a açnerefid ertne mu adahcam e amu odahcam? aob acac", "tamanho");
+            addQuestion("jfzmgzh nzlh wveh fhzi kziz xligzi xln fn nzxszwl? ylz xzxz", "2");
+            addQuestion("17.21.1.12 3 15 14.15 21.20.9.12.9.26.1.4.15 16.1.18.1 21.14.9.18 2.21.1.19 3.15.18.4.1.19 4.5 2.9.20.15.12.1.19 9.7.21.1.9.19? 2.15.1 3.1.3.1", "nó direito");
+
+            $(function () {
+                $("#answer").on('keydown', function (e) {
+                    console.log(e.keyCode);
+                    if (e.keyCode === 13) {
+                        e.preventDefault();
+                        submit();
+                        return false;
+                    }
+                });
+                addDoneQuestions();
+                addNextQuestion();
+            })
+
+        </script>
+
+        <div id="perguntas"></div>
+        <textarea id="answer"></textarea>
+        <a id="submit" onclick="submit()">Submeter</a>
+    </section>
+
+</body>
+
+</html>
