@@ -11,11 +11,15 @@ textarea {
 }
 
 .question_title {
-    font-size: 18pt;
+    font-size: 20pt;
     padding-bottom: 10px;
 }
 
 .question {
-    font-size: 12pt;
+    font-size: 14pt;
     padding-bottom: 10px;
+}
+
+.answer {
+    font-size: 14pt;
 }
