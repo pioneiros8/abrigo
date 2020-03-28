@@ -16,7 +16,7 @@
         <hr>
     </nav>
 
-    <section>
+    <section id="desafio">
         <h1>Primeiro Desafio</h1>
 
         <script>
@@ -63,14 +63,26 @@
                     $("#perguntas").append(questions[i].makeQuestionDiv(1 + i));
                     $("#perguntas").append(questions[i].makeAnswerDiv());
                 }
-                if (progress >= questions.length) {
-                    $("#answer").hide();
-                    $("#submit").hide();
-                }
             }
             function addNextQuestion() {
                 if (questions[progress])
                     $("#perguntas").append(questions[progress].makeQuestionDiv(1 + progress));
+                end();
+            }
+            function end() {
+                if (progress >= questions.length) {
+                    $("#answer").hide();
+                    $("#submit").hide();
+                    let end_div = $(`
+                    <div id="end_div">
+                        Parabéns! Completaste o desafio!<br>
+                        Envia este código para a melhor equipa de animação:<br>
+                        1D2020<br>
+                        E prepara-te para o proximo desafio!
+                        <br>
+                    </div>`);
+                    $("#desafio").append(end_div);
+                }
             }
 
             addQuestion("17.21.1.14.20.1.19  1.19.19.15.3.9.1.3.15.5.19  8.1  5.13  16.15.18.20.21.7.1.12  1.19.19.15.3.9.1.4.1.19  1.15  13.15.22.9.13.5.14.20.15  13.21.14.4.9.1.12  5.19.3.21.20.9.19.20.1? 2.15.1  3.1.3.1", "4");
