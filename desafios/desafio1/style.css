@@ -27,3 +27,7 @@ textarea {
 #end_div {
     font-size: 20pt;
 }
+
+#hint {
+    color: rgb(185, 0, 0);
+}

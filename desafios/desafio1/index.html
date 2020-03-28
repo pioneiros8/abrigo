@@ -22,7 +22,8 @@
         Só com a resposta certa conseguirás passar para a próxima pergunta!<br>
         Todas as perguntas têm apenas uma resposta, que terá de ser escrita correctamente.<br>
         Boa caça <br>
-        <br><hr><br>
+        <br>
+        <hr><br>
         <script>
             var questions = [];
             var progress = parseInt(Cookies.get("desafio1_progress"));
@@ -58,6 +59,8 @@
                     setProgress();
                     addNextQuestion();
                     $('body').scrollTop($('body')[0].scrollHeight);
+                } else {
+                    $("#hint").html("Resposta errada!");
                 }
                 $("#answer").val("");
             }
@@ -74,6 +77,7 @@
                 end();
             }
             function end() {
+                $("#hint").html("");
                 if (progress >= questions.length) {
                     $("#answer").hide();
                     $("#submit").hide();
@@ -164,8 +168,9 @@
         </script>
 
         <div id="perguntas"></div>
+        <span id="hint"></span><br>
         <textarea id="answer"></textarea>
-        <a id="submit" onclick="submit()">Submeter</a>
+        <a id="submit" onclick="submit()">Submeter</a><br>
     </section>
 
 </body>
