@@ -53,3 +53,7 @@ section h1 {
 footer {
     font-size: 2px;
 }
+
+.bold {
+    font-weight: bold;
+}
